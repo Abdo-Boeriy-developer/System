@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Hacked</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: #00FF00;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.5rem;
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #message {
+            margin-bottom: 20px;
+            animation: flicker 0.2s infinite;
+        }
+
+        #console {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            height: 50vh;
+            width: 90%;
+            overflow-y: auto;
+            border: 2px solid #00FF00;
+            padding: 10px;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="message">⚠ جاري تهكير هاتفك بالكامل ⚠</div>
+    <div id="console"></div>
+    <audio autoplay loop>
+        <source src="https://www.fesliyanstudios.com/play-mp3/671" type="audio/mpeg">
+    </audio>
+    <script>
+        const consoleDiv = document.getElementById("console");
+        const hackingSteps = [
+            "جارِ الاتصال بالسيرفر...",
+            "جارِ تجاوز حماية النظام...",
+            "تم الوصول إلى بيانات الهاتف...",
+            "جارِ تحميل الملفات الحساسة...",
+            "تمت السيطرة على النظام بالكامل!",
+            "⚠ جاري حذف كافة البيانات... ⚠",
+            "⚠ إيقاف تشغيل الهاتف... ⚠",
+            "متخفش عبدو بيهزر معاك"
+        ];
+
+        function generateRandomString() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let str = "";
+            for (let i = 0; i < Math.floor(Math.random() * 15) + 5; i++) {
+                str += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return str;
+        }
+
+        function showRandomData() {
+            const randomData = ` ${generateRandomString()}
+        } ${generateRandomString()} ${Math.random().toFixed(8)}`;
+            consoleDiv.textContent += randomData + "\\n";
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+        function showHackingSteps(step = 0) {
+            if (step < hackingSteps.length) {
+                consoleDiv.textContent += hackingSteps[step] + "\\n";
+                consoleDiv.scrollTop = consoleDiv.scrollHeight;
+                setTimeout(() => showHackingSteps(step + 1), 300);
+            } else {
+                setInterval(showRandomData, 100);
+            }
+        }
+
+        showHackingSteps();
+    </script>
+</body>
+
+</html>
